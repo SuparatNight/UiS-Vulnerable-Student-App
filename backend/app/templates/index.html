@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero-panel mb-4">
+  <h1 class="display-6 fw-bold">UiS Student Project Portal</h1>
+  <p class="mb-4">Manage courses, project groups, assignment submissions, grades, and feedback in one place.</p>
+  {% if user %}
+    <a class="btn btn-light" href="/dashboard"><i class="bi bi-speedometer2 me-1"></i>Go to dashboard</a>
+  {% else %}
+    <a class="btn btn-light me-2" href="/login"><i class="bi bi-box-arrow-in-right me-1"></i>Login</a>
+    <a class="btn btn-outline-light" href="/register">Create account</a>
+  {% endif %}
+</section>
+
+<div class="row g-3">
+  <div class="col-md-3"><div class="stat-tile"><div class="text-muted small">Courses</div><div class="h5 mb-0">4 active</div></div></div>
+  <div class="col-md-3"><div class="stat-tile"><div class="text-muted small">Assignments</div><div class="h5 mb-0">4 planned</div></div></div>
+  <div class="col-md-3"><div class="stat-tile"><div class="text-muted small">Messaging</div><div class="h5 mb-0">Internal</div></div></div>
+  <div class="col-md-3"><div class="stat-tile"><div class="text-muted small">Feedback</div><div class="h5 mb-0">Continuous</div></div></div>
+</div>
+{% endblock %}

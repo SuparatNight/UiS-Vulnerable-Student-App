@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Manage users</h2>
+<p class="page-subtitle">Search users and update role assignments.</p>
+<form class="mb-3" action="/admin/search-users" method="get">
+  <div class="input-group">
+    <span class="input-group-text"><i class="bi bi-search"></i></span>
+    <input class="form-control" name="q" value="{{ q or '' }}" placeholder="Search users">
+    <button class="btn btn-primary">Search</button>
+  </div>
+</form>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Change role</th></tr>
+      </thead>
+      <tbody>
+      {% for u in users %}
+      <tr>
+        <td>{{u.id}}</td><td>{{u.full_name}}</td><td>{{u.email}}</td><td><span class="badge bg-secondary">{{u.role}}</span></td>
+        <td>
+          <form method="post" action="/admin/users/{{u.id}}/role" class="d-flex gap-2">
+            <select class="form-select" name="role">
+              <option value="student" {% if u.role == 'student' %}selected{% endif %}>student</option>
+              <option value="ta" {% if u.role == 'ta' %}selected{% endif %}>ta</option>
+              <option value="teacher" {% if u.role == 'teacher' %}selected{% endif %}>teacher</option>
+              <option value="admin" {% if u.role == 'admin' %}selected{% endif %}>admin</option>
+            </select>
+            <button class="btn btn-sm btn-primary">Save role</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-muted">No users found.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

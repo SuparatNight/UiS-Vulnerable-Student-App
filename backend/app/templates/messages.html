@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Messages</h2>
+<p class="page-subtitle">Send updates and coordinate with classmates.</p>
+<form method="post" action="/messages" class="card p-4 mb-3">
+  <h5 class="mb-3"><i class="bi bi-send me-1"></i>New message</h5>
+  <select class="form-select mb-3" name="recipient_id">
+    {% for u in users %}
+      <option value="{{ u.id }}">{{ u.full_name }} ({{ u.email }})</option>
+    {% endfor %}
+  </select>
+  <textarea class="form-control mb-3" name="content" required></textarea>
+  <button class="btn btn-primary">Send message</button>
+</form>
+
+<h5 class="mb-3">Inbox</h5>
+<ul class="list-group shadow-sm">
+{% for m in messages %}
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div><strong>{{ m.sender_name }}</strong>: {{ m.content|safe }}</div>
+    <a class="btn btn-sm btn-outline-secondary" href="/messages/{{m.id}}">Open</a>
+  </li>
+{% else %}
+  <li class="list-group-item text-muted">No messages yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

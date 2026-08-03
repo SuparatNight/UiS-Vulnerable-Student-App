@@ -1,0 +1,86 @@
+body {
+  background: #f4f7fb;
+  min-height: 100vh;
+}
+
+.navbar-brand {
+  letter-spacing: 0.2px;
+}
+
+.card {
+  border-radius: 0.9rem;
+  border: 1px solid #e8eef6;
+  box-shadow: 0 0.25rem 0.9rem rgba(43, 71, 112, 0.06);
+}
+
+.card .card-header {
+  background: transparent;
+  border-bottom: 1px solid #edf2f8;
+}
+
+.page-title {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.hero-panel {
+  background: linear-gradient(120deg, #1f6feb 0%, #1aa3ff 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0.35rem 1rem rgba(30, 80, 160, 0.35);
+}
+
+.hero-panel .btn-light {
+  border: none;
+}
+
+.stat-tile {
+  border-radius: 0.9rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #e8eef6;
+}
+
+.table thead th {
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5b6c85;
+}
+
+pre {
+  white-space: pre-wrap;
+  border-radius: 0.6rem;
+}
+
+.btn {
+  letter-spacing: 0.01em;
+}
+
+.list-group-item .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  main.container {
+    padding-top: 1.1rem !important;
+  }
+
+  .hero-panel {
+    padding: 1.35rem;
+  }
+
+  .card {
+    border-radius: 0.75rem;
+  }
+
+  .page-title {
+    font-size: 1.45rem;
+  }
+}

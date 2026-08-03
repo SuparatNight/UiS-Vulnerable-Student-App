@@ -1,0 +1,7 @@
+instructor_private/
+__pycache__/
+*.pyc
+.env
+backend/app/uploads/*
+!backend/app/uploads/.gitkeep
+push.sh

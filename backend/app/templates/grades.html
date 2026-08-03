@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Your grades</h2>
+<p class="page-subtitle">Review published grades and feedback.</p>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr><th>Assignment</th><th>Grade</th><th>Feedback</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+      {% for g in grades %}
+      <tr>
+        <td>{{ g.assignment_title }}</td>
+        <td><span class="badge bg-primary">{{ g.grade_value }}</span></td>
+        <td>{{ g.feedback|safe }}</td>
+        <td><a class="btn btn-sm btn-outline-primary" href="/grades/{{ g.id }}">Open</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" class="text-muted">No grades available.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

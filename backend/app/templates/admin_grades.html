@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Manage grades</h2>
+<p class="page-subtitle">Review and update grade and feedback entries.</p>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-hover mb-0">
+      <thead>
+        <tr><th>Student</th><th>Assignment</th><th>Grade</th><th>Feedback</th><th>Update</th></tr>
+      </thead>
+      <tbody>
+      {% for g in grades %}
+      <tr>
+        <td>{{g.student_name}}</td>
+        <td>{{g.assignment_title}}</td>
+        <td><span class="badge bg-primary">{{g.grade_value}}</span></td>
+        <td>{{g.feedback|safe}}</td>
+        <td>
+          <form method="post" action="/admin/grades/{{g.id}}/update">
+            <input class="form-control mb-1" name="grade_value" value="{{g.grade_value}}">
+            <textarea class="form-control mb-1" name="feedback">{{g.feedback}}</textarea>
+            <input class="form-control mb-1" name="role" value="{{user.role}}">
+            <button class="btn btn-sm btn-primary">Update</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="text-muted">No grades found.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

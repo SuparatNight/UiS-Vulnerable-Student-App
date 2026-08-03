@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title text-danger">Unexpected error</h2>
+<p class="page-subtitle">The request could not be completed.</p>
+<div class="card p-3 border-danger-subtle">
+  <pre class="bg-light p-3 mb-0">{{ details }}</pre>
+</div>
+{% endblock %}

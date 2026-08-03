@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">{{ course.title }}</h2>
+<p class="page-subtitle">{{ course.description }}</p>
+
+<form method="post" action="/courses/{{ course.id }}/register" class="card p-4 mb-3">
+  <h5 class="mb-3"><i class="bi bi-people me-1"></i>Register in project group</h5>
+  <input class="form-control mb-2" name="group_name" placeholder="Group name">
+  <button class="btn btn-success">Register</button>
+</form>
+
+<form method="post" action="/courses/{{ course.id }}/comment" class="card p-4 mb-3">
+  <h5 class="mb-3"><i class="bi bi-chat-left-text me-1"></i>Course comments</h5>
+  <textarea class="form-control mb-3" name="content" required></textarea>
+  <button class="btn btn-primary">Post comment</button>
+</form>
+
+<h5 class="mb-3">Recent comments</h5>
+{% for c in comments %}
+<div class="card p-3 mb-2"><strong>{{ c.full_name }}</strong><div class="text-muted mt-1">{{ c.content|safe }}</div></div>
+{% else %}
+<div class="alert alert-secondary">No comments yet.</div>
+{% endfor %}
+{% endblock %}

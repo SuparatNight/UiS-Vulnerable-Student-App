@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Import external course resource</h2>
+<p class="page-subtitle">Fetch external resource content by URL.</p>
+<form method="get" action="/resources/import" class="card p-4 mb-3">
+  <label class="form-label">Resource URL</label>
+  <input class="form-control mb-3" name="url" placeholder="https://example.com/resource" value="{{url}}">
+  <button class="btn btn-primary">Fetch</button>
+</form>
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+{% if body %}
+<div class="card p-3">
+  <div class="small text-muted mb-2">Response preview</div>
+  <pre class="p-3 bg-light border mb-0">{{ body }}</pre>
+</div>
+{% endif %}
+{% endblock %}

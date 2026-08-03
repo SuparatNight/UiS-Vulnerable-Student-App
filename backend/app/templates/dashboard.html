@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Dashboard</h2>
+<p class="page-subtitle">Welcome, <strong>{{ user.full_name }}</strong> <span class="badge bg-info text-dark">{{ user.role }}</span></p>
+
+<div class="row g-3 mb-3">
+  <div class="col-md-4"><div class="stat-tile"><div class="text-muted small">Registered courses</div><div class="h5 mb-0">{{ courses|length }}</div></div></div>
+  <div class="col-md-4"><div class="stat-tile"><div class="text-muted small">Unread messages</div><div class="h5 mb-0">{{ messages|length }}</div></div></div>
+  <div class="col-md-4"><div class="stat-tile"><div class="text-muted small">Recent feedback items</div><div class="h5 mb-0">{{ grades|length }}</div></div></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><i class="bi bi-journal-bookmark me-1"></i>Your courses</div>
+      <ul class="list-group list-group-flush">
+        {% for c in courses %}<li class="list-group-item">{{ c.title }}</li>{% else %}<li class="list-group-item text-muted">No courses yet</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><i class="bi bi-chat-left-text me-1"></i>Latest messages</div>
+      <ul class="list-group list-group-flush">
+        {% for m in messages %}<li class="list-group-item">{{ m.content|safe }}</li>{% else %}<li class="list-group-item text-muted">No recent messages</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header"><i class="bi bi-clipboard2-check me-1"></i>Latest feedback</div>
+      <ul class="list-group list-group-flush">
+        {% for g in grades %}<li class="list-group-item"><span class="badge bg-primary me-1">{{ g.grade_value }}</span>{{ g.feedback|safe }}</li>{% else %}<li class="list-group-item text-muted">No feedback yet</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

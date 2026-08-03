@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Grade detail</h2>
+<p class="page-subtitle">Detailed grade record for the selected submission.</p>
+<div class="card p-4">
+  <p><strong>Student:</strong> {{ grade.student_name }}</p>
+  <p><strong>Assignment:</strong> {{ grade.assignment_title }}</p>
+  <p><strong>Grade:</strong> <span class="badge bg-primary">{{ grade.grade_value }}</span></p>
+  <p class="mb-0"><strong>Feedback:</strong> {{ grade.feedback|safe }}</p>
+</div>
+{% endblock %}

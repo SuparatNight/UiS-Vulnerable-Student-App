@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">System status</h2>
+<p class="page-subtitle">Runtime and environment information for this lab app.</p>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item d-flex justify-content-between"><span>Environment</span><strong>{{ env }}</strong></li>
+    <li class="list-group-item d-flex justify-content-between"><span>Runtime</span><strong>{{ python }}</strong></li>
+    <li class="list-group-item d-flex justify-content-between"><span>Service</span><strong>{{ service }}</strong></li>
+    <li class="list-group-item d-flex justify-content-between"><span>User</span><strong>{{ user.email if user else 'guest' }}</strong></li>
+  </ul>
+</div>
+{% endblock %}

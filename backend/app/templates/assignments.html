@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Assignments</h2>
+<p class="page-subtitle">Upload and track your assignment submissions.</p>
+<form method="post" action="/assignments/upload" enctype="multipart/form-data" class="card p-4 mb-3">
+  <h5 class="mb-3"><i class="bi bi-upload me-1"></i>Upload submission</h5>
+  <select class="form-select mb-3" name="assignment_id">
+    {% for a in assignments %}
+      <option value="{{ a.id }}">{{ a.title }}</option>
+    {% endfor %}
+  </select>
+  <input type="file" class="form-control mb-3" name="file" required>
+  <button class="btn btn-primary">Upload submission</button>
+</form>
+
+<h5 class="mb-3">Your submissions</h5>
+<ul class="list-group">
+{% for s in submissions %}
+  <li class="list-group-item">
+    <i class="bi bi-file-earmark-text me-1"></i>{{ s.filename }} - <a href="/uploads/{{ s.file_path }}">Open</a>
+  </li>
+{% else %}
+  <li class="list-group-item text-muted">No submissions yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

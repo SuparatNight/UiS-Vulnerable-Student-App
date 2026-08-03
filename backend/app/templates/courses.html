@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="page-title">Courses</h2>
+<p class="page-subtitle">Browse available courses and open details.</p>
+<form action="/courses/search" method="get" class="mb-3">
+  <div class="input-group">
+    <span class="input-group-text"><i class="bi bi-search"></i></span>
+    <input class="form-control" name="q" value="{{ search_query or '' }}" placeholder="Search course">
+    <button class="btn btn-primary">Search</button>
+  </div>
+</form>
+<div class="row g-3">
+{% for c in courses %}
+  <div class="col-md-6 col-xl-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ c.title }}</h5>
+        <p class="card-text text-muted">{{ c.description }}</p>
+        <a href="/courses/{{ c.id }}" class="btn btn-sm btn-primary">Open</a>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="col-12"><div class="alert alert-secondary mb-0">No courses found.</div></div>
+{% endfor %}
+</div>
+{% endblock %}
